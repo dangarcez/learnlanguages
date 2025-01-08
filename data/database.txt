@@ -1,0 +1,1 @@
+[{"id":0,"title":"Printar no console","titles":["Printar no console","Printar no console","Printa no console"],"descricoes":["descrição","descrição","descrição"],"codes":["console.log(\"Olá mundo\");","print(\"Ola mundo\");","System.out.println(\"Ola mundo\");"]}]

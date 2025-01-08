@@ -1,0 +1,146 @@
+html,body{
+   height: 100%;
+}
+
+*{
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+
+
+
+.content{
+   display: flex;
+   height: 100%;
+
+}
+
+aside{
+   color: red;
+   position:sticky;
+   height: 100%;
+   flex-basis: 200px;
+   flex-grow: 0;
+   border-right: 2px solid black;
+   background-color: rgb(48 47 48);
+   color: white;
+}
+
+main{
+   flex-grow:1;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   position: relative;
+   font-family: sans-serif;
+}
+
+#saveButton{
+   position: fixed;
+   right:10px;
+   top: 10px;
+   border: 1px solid black;
+   color: white;
+   background-color: blue;
+   padding: 5px 10px;
+   border-radius: 5px;   
+}
+
+#addButton{
+   padding: 5px 10px;
+   margin-top: 10px;
+   border: 1px solid black;
+   border-radius: 5px;
+}
+
+#saveButton:active{
+   transform: translate(1px,1px);
+}
+
+h1{
+   text-align: center;
+   font-size: 25px;
+   font-weight: normal;
+   margin-bottom: 20px;
+}
+
+.assunto{
+   padding-bottom: 40px;
+   padding-top: 40px;
+   border-bottom: 1px solid #b3beb3;
+}
+
+table{
+   margin-top: 10px;
+   width: 1000px;
+   table-layout: fixed;
+   word-break: break-all;
+}
+
+th{
+   padding:10px;
+   color: #2b0076;
+}
+
+td{
+   white-space: pre-line;
+   padding: 5px;
+}
+
+.title .grow-wrap{
+   font-size: 18px;
+   font-family: 'Courier New', Courier, monospace;
+   font-weight: bold;
+   text-align: center;
+}
+
+.grow-wrap{
+   display: grid;
+   min-width: 10px;
+   min-height: 10px;
+}
+
+.grow-wrap {
+  /* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
+  display: grid;
+}
+.grow-wrap.active::after {
+  /* Note the weird space! Needed to preventy jumpy behavior */
+  content: attr(data-replicated-value) " ";
+
+  /* This is how textarea text behaves */
+  white-space: pre-wrap;
+
+  /* Hidden from view, clicks, and screen readers */
+  visibility: hidden;
+}
+.grow-wrap > textarea {
+  /* You could leave this, but after a user resizes, then it ruins the auto sizing */
+  resize: none;
+
+  /* Firefox shows scrollbar on growth, you can hide like this. */
+  overflow: hidden;
+}
+.grow-wrap.active > textarea,
+.grow-wrap.active::after {
+  /* Identical styling required!! */
+  border: none;
+  font: inherit;
+  outline: none;
+  /* Place on top of each other */
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+td.code{
+   font-family: 'Courier New', Courier, monospace;
+   background-color: #0e200f;
+   color: #56ff5f;
+}
+
+
+td.changed{
+   background-color: #b0ffa0;
+   color: black;
+}
