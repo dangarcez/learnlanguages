@@ -130,12 +130,30 @@ function createAssunto(assunto) {
        rowData.forEach(cellData => {
            const td = document.createElement('td');
            td.className = cellData.className;
+           td.style.cssText= "position:relative";
+
+           const growButton = document.createElement("button")
+           growButton.textContent = "+";
+           growButton.classList.add("growButton");
+           growButton.style.cssText = "position:absolute;right:0px;top:0px;height:18px;width:18px";
+           growButton.addEventListener("click", e=>{
+            if(e.target.nextSibling.classList.contains('hidden')){
+               e.target.nextSibling.classList.remove('hidden');
+               e.target.textContent = "-";
+            }else{
+               e.target.nextSibling.classList.add('hidden');
+               e.target.textContent = "+";
+            }
+           })
+           td.appendChild(growButton);
 
            const divGrowWrap = document.createElement('div');
            divGrowWrap.className = 'grow-wrap';
+           divGrowWrap.classList.add("hidden");
            divGrowWrap.setAttribute("data-language", cellData.language);
            divGrowWrap.setAttribute("data-type", cellData.type);
            divGrowWrap.textContent = cellData.content;
+
 
            td.appendChild(divGrowWrap);
            row.appendChild(td);
@@ -151,7 +169,10 @@ function createAssunto(assunto) {
    celulas.forEach((celula)=>{
       celula.addEventListener("click",(e)=>{
          const cel = e.target;
-         console.log(cel)
+         if(cel.tagName=="BUTTON"){
+            return
+         }
+         console.log(cel.tagName)
 
          const input = document.createElement("textArea")
          // input.setAttribute("type", "text")
@@ -168,10 +189,10 @@ function createAssunto(assunto) {
          cel.innerHTML = ""
          input.addEventListener("blur",(e)=>{
             const thisinput = e.target;
-            cel.innerHTML = thisinput.value || "Empty";
+            cel.innerHTML = thisinput.value || "|";
             cel.classList.remove("active");
             console.log(e.target)
-            tabelas[assunto.id][cel.dataset.type][cel.dataset.language] = thisinput.value || "Empty";
+            tabelas[assunto.id][cel.dataset.type][cel.dataset.language] = thisinput.value || "|";
             thisinput.remove();
             celula.dataset.replicatedValue =  " "
          })

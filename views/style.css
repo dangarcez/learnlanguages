@@ -102,6 +102,11 @@ td{
    min-height: 10px;
 }
 
+.grow-wrap.hidden{
+   max-height: 40px;
+   overflow: hidden;
+}
+
 .grow-wrap {
   /* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
   display: grid;
@@ -139,8 +144,22 @@ td.code{
    color: #56ff5f;
 }
 
+td.text{
+   background-color: #323536;
+   font-family: monospace;
+   font-size: 14px;
+   color: white;
+}
+
 
 td.changed{
    background-color: #b0ffa0;
    color: black;
+}
+
+.growButton{
+   color: inherit;
+   border: white;
+   background-color: transparent;
+   font-weight: bold;
 }
